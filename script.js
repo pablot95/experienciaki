@@ -5,18 +5,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
-    burger.addEventListener('click', () => {
-        // Toggle Nav
-        nav.classList.toggle('nav-active');
+    if (burger && nav) {
+        burger.addEventListener('click', () => {
+            // Toggle Nav
+            nav.classList.toggle('nav-active');
 
-        // Burger Animation (Optional: Toggle class for X shape)
-        burger.classList.toggle('toggle');
-    });
+            // Burger Animation (Optional: Toggle class for X shape)
+            burger.classList.toggle('toggle');
+        });
+    }
 
     // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            if (nav.classList.contains('nav-active')) {
+            if (nav && nav.classList.contains('nav-active')) {
                 nav.classList.remove('nav-active');
             }
         });
@@ -27,8 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const faders = document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up');
 
     const appearOptions = {
-        threshold: 0.15, // Trigger when 15% of item is visible
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.05, // Trigger when 5% of item is visible (más sensible)
+        rootMargin: "0px 0px -30px 0px"
     };
 
     const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
