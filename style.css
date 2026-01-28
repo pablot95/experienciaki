@@ -645,6 +645,15 @@ ul {
 
 /* RESPONSIVE */
 @media screen and (max-width: 768px) {
+    /* Prevenir overflow horizontal */
+    body {
+        overflow-x: hidden;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+
     .nav-links {
         display: none;
     }
@@ -653,7 +662,7 @@ ul {
         display: flex;
         flex-direction: column;
         position: absolute;
-        top: 80px; /* Adjust based on header height */
+        top: 80px;
         left: 0;
         width: 100%;
         background-color: var(--bg-hero);
@@ -673,20 +682,16 @@ ul {
 
     .footer-split-container {
         grid-template-columns: 1fr;
-        /* Reorder: Map/Contact first, Image second or hidden? 
-           Usually Footer bottom image is fine. 
-        */
         display: flex;
-        flex-direction: column-reverse; /* Image bottom, info top? Or standard flow */
         flex-direction: column;
     }
 
     .footer-image-side {
-        height: 300px; /* Limit height on mobile */
+        height: 300px;
     }
 
     .footer-info {
-        padding: 60px 20px;
+        padding: 40px 15px;
     }
 
     .hero-text {
@@ -696,6 +701,8 @@ ul {
 
     .hero-section {
         padding-top: 100px;
+        padding-left: 15px;
+        padding-right: 15px;
     }
     
     /* Make order logical on mobile: Image then Text usually */
@@ -706,14 +713,95 @@ ul {
 
     .about-image img, .hero-image img {
         margin: 0 auto;
+        width: 100%;
+        height: auto;
     }
 
     .services-grid {
         grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 0;
     }
 
     .when-grid {
         grid-template-columns: 1fr;
+    }
+    
+    /* Reducir padding de secciones en móvil */
+    .about-section,
+    .feedback-section,
+    .info-section,
+    .when-section {
+        padding: 50px 15px;
+    }
+    
+    /* Servicios con padding diferente para que las imágenes ocupen todo el ancho */
+    .services-section {
+        padding: 50px 0;
+    }
+    
+    .services-section .container {
+        padding: 0;
+    }
+    
+    .services-section .section-title {
+        padding: 0 15px;
+    }
+    
+    /* Ajustar tamaños de texto en móvil */
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        word-wrap: break-word;
+    }
+    
+    .hero-quote {
+        font-size: 1.1rem;
+        padding: 0 10px;
+    }
+    
+    .btn-outline {
+        padding: 10px 40px;
+        font-size: 1.1rem;
+        word-wrap: break-word;
+    }
+    
+    .about-text h2 {
+        font-size: 1.8rem;
+    }
+    
+    .service-card {
+        padding: 0 15px 20px 15px;
+        margin-bottom: 0;
+    }
+    
+    .service-img {
+        width: 100vw;
+        height: 350px;
+        margin-left: -15px;
+        margin-right: -15px;
+        margin-bottom: 20px;
+        border-radius: 0;
+    }
+    
+    .service-card h3 {
+        font-size: 1.3rem;
+        padding: 0 5px;
+    }
+    
+    .service-card h4 {
+        font-size: 1rem;
+        padding: 0 5px;
+    }
+    
+    .service-card p {
+        padding: 0 5px;
+    }
+    
+    .testimonial p {
+        font-size: 1.2rem;
+        padding: 0 10px;
     }
 }
 
@@ -841,27 +929,66 @@ ul {
 /* Responsive adjustments for new sections */
 @media screen and (max-width: 768px) {
     .info-content h3 {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+        padding: 0 5px;
     }
 
     .info-content p {
+        font-size: 0.95rem;
+        padding: 0 5px;
+    }
+    
+    .highlight-text {
         font-size: 1rem;
+        padding: 15px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .when-grid {
         grid-template-columns: 1fr;
-        gap: 40px;
+        gap: 30px;
+        padding: 0 5px;
+    }
+    
+    /* Achicar significativamente el título en móvil */
+    .when-section .section-title {
+        font-size: 1.3rem !important;
+        line-height: 1.3;
+        padding: 0 5px;
+        letter-spacing: 1px;
     }
 
     .checklist li {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding-left: 25px;
+        margin-bottom: 12px;
+    }
+    
+    .checklist li::before {
+        font-size: 1.1rem;
     }
 
     .when-description p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        padding: 0 5px;
+    }
+    
+    .italic-text {
+        padding: 15px;
+        font-size: 0.9rem;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     .service-list li {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        line-height: 1.5;
+        padding-left: 5px;
+    }
+    
+    .service-list .sub-item {
+        margin-left: 10px;
+        font-size: 0.8rem;
     }
 }
