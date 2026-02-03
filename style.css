@@ -484,6 +484,25 @@ ul {
     color: var(--text-accent);
 }
 
+.instagram-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--white);
+    padding: 12px 30px;
+    border: 1px solid var(--white);
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    margin-top: 15px;
+}
+
+.instagram-btn:hover {
+    background-color: var(--white);
+    color: var(--text-accent);
+}
+
 .copyright {
     margin-top: 20px;
     font-size: 0.8rem;
@@ -500,6 +519,42 @@ ul {
     height: 100%;
     object-fit: cover;
     display: block;
+}
+
+/* Floating WhatsApp Button */
+.wsp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 40px;
+    right: 40px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.wsp-float:hover {
+    background-color: #20ba5a;
+    transform: scale(1.1);
+    color: #FFF;
+}
+
+@media screen and (max-width: 768px) {
+    .wsp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
 }
 
 
