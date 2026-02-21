@@ -1,21 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- Burger Menu Logic ---
+
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav-links');
     const navLinks = document.querySelectorAll('.nav-links li');
 
     if (burger && nav) {
         burger.addEventListener('click', () => {
-            // Toggle Nav
             nav.classList.toggle('nav-active');
-
-            // Burger Animation (Optional: Toggle class for X shape)
             burger.classList.toggle('toggle');
         });
     }
 
-    // Close menu when clicking a link
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
             if (nav && nav.classList.contains('nav-active')) {
@@ -24,12 +19,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
-    // --- Scroll Animations (Intersection Observer) ---
     const faders = document.querySelectorAll('.fade-in-left, .fade-in-right, .fade-in-up');
 
     const appearOptions = {
-        threshold: 0.05, // Trigger when 5% of item is visible (más sensible)
+        threshold: 0.05,
         rootMargin: "0px 0px -30px 0px"
     };
 
@@ -39,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             } else {
                 entry.target.classList.add('visible');
-                appearOnScroll.unobserve(entry.target); // Stop observing once visible
+                appearOnScroll.unobserve(entry.target);
             }
         });
     }, appearOptions);
@@ -48,10 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(fader);
     });
 
-
-    // --- Testimonial Carousel ---
     const track = document.querySelector('.carousel-track');
-    // Check if carousel exists to avoid errors on other pages if any
     if (track) {
         const slides = Array.from(track.children);
         const dotsNav = document.querySelector('.carousel-nav');
@@ -67,9 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
 
-        // Click indicators
         dotsNav.addEventListener('click', e => {
-            // What indicator was clicked on?
             const targetDot = e.target.closest('button');
 
             if (!targetDot) return;
@@ -80,21 +68,18 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetSlide = slides[targetIndex];
 
             moveToSlide(currentSlide, targetSlide, currentDot, targetDot);
-            
-            // Reset auto-play timer on manual interaction
+
             resetAutoPlay();
         });
 
-        // Auto Play
         let slideInterval;
-        
+
         const nextSlide = () => {
             const currentSlide = track.querySelector('.current-slide');
             const currentDot = dotsNav.querySelector('.current-slide');
             let nextSlide = currentSlide.nextElementSibling;
             let nextDot = currentDot.nextElementSibling;
 
-            // If no next slide, loop back to first
             if (!nextSlide) {
                 nextSlide = slides[0];
                 nextDot = dots[0];
@@ -104,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         const startAutoPlay = () => {
-            slideInterval = setInterval(nextSlide, 5000); // 5 seconds
+            slideInterval = setInterval(nextSlide, 5000);
         };
 
         const resetAutoPlay = () => {

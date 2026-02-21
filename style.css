@@ -1,19 +1,15 @@
 :root {
-    /* Palette from Prompt */
-    --bg-hero: #f9f5f2; /* Beige muy claro / nude rosado */
-    --bg-about: #eadbd6; /* Beige rosado más intenso */
-    --bg-services: #fffdfb; /* Blanco cálido */
-    --text-main: #333333; /* Negro suave */
-    --text-accent: #5d4037; /* Marrón oscuro para títulos */
+    --bg-hero: #f9f5f2;
+    --bg-about: #eadbd6;
+    --bg-services: #fffdfb;
+    --text-main: #333333;
+    --text-accent: #5d4037;
     --btn-border: #000000;
     --white: #ffffff;
-    
-    /* Spacing */
     --container-width: 1400px;
     --section-padding: 80px 20px;
 }
 
-/* RESET & BASE */
 * {
     margin: 0;
     padding: 0;
@@ -57,14 +53,13 @@ ul {
     padding: 0 20px;
 }
 
-/* HEADER */
 #main-header {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     background: rgba(249, 245, 242, 0.95);
-    backdrop-filter: blur(5px); /* Efecto vidrio */
+    backdrop-filter: blur(5px);
     padding: 20px 5%;
     display: flex;
     justify-content: space-between;
@@ -90,7 +85,23 @@ ul {
     text-transform: uppercase;
     letter-spacing: 1px;
     color: var(--text-main);
-    /* Removed redundant rules to let new animation rules take over cleanly */
+    position: relative;
+    padding-bottom: 5px;
+}
+
+.nav-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--text-accent);
+    transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+    width: 100%;
 }
 
 .nav-links li a:hover {
@@ -110,9 +121,8 @@ ul {
     transition: all 0.3s ease;
 }
 
-/* HERO SECTION */
 .hero-section {
-    padding: 40px 20px 40px; /* Top padding for fixed header */
+    padding: 40px 20px 40px;
     background-color: var(--bg-hero);
     min-height: 100vh;
     display: flex;
@@ -126,7 +136,6 @@ ul {
     align-items: center;
 }
 
-/* Hero Image Floating Effect */
 .hero-image img {
     border-radius: 4px;
     box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
@@ -145,7 +154,7 @@ ul {
     font-size: 1.5rem;
     margin-bottom: 40px;
     color: var(--text-main);
-    border-left: none; /* Reset default browser style */
+    border-left: none;
 }
 
 .btn-outline {
@@ -165,6 +174,23 @@ ul {
     color: var(--white);
 }
 
+.btn-outline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.2);
+    transition: transform 0.4s;
+    transform: skewX(-20deg);
+}
+
+.btn-outline:hover::before {
+    left: 100%;
+    transition: 0.5s;
+}
+
 .hero-subtitle {
     font-size: 1.2rem;
     letter-spacing: 3px;
@@ -180,7 +206,6 @@ ul {
     line-height: 1.8;
 }
 
-/* ABOUT SECTION */
 .about-section {
     background-color: var(--bg-about);
     padding: var(--section-padding);
@@ -188,13 +213,13 @@ ul {
 
 .about-container {
     display: grid;
-    grid-template-columns: 40% 1fr ;
+    grid-template-columns: 40% 1fr;
     gap: 60px;
     align-items: center;
 }
 
 .about-text {
-    color: var(--text-accent); /* Marrón oscuro texto */
+    color: var(--text-accent);
 }
 
 .about-text h2 {
@@ -212,10 +237,102 @@ ul {
 .about-image img {
     height: 500px;
     border-radius: 4px;
-    box-shadow: -10px 10px 30px rgba(0,0,0,0.1); /* Sombra lado opuesto */
+    box-shadow: -10px 10px 30px rgba(0,0,0,0.1);
 }
 
-/* SERVICES SECTION */
+.info-section {
+    background-color: var(--bg-about);
+    padding: var(--section-padding);
+}
+
+.info-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.info-content h3 {
+    font-size: 2rem;
+    color: var(--text-accent);
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+.info-content h3:first-child {
+    margin-top: 0;
+}
+
+.info-content p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 25px;
+    color: var(--text-main);
+}
+
+.highlight-text {
+    font-style: italic;
+    font-size: 1.15rem;
+    color: var(--text-accent);
+    font-weight: 500;
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 4px;
+}
+
+.when-section {
+    background-color: var(--bg-hero);
+    padding: var(--section-padding);
+}
+
+.when-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.checklist {
+    list-style: none;
+    padding: 0;
+}
+
+.checklist li {
+    font-size: 1.05rem;
+    margin-bottom: 15px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.checklist li::before {
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    color: var(--text-accent);
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
+.when-description p {
+    font-size: 1.05rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+    color: var(--text-main);
+}
+
+.italic-text {
+    font-style: italic;
+    color: var(--text-accent);
+    background: rgba(93, 64, 55, 0.05);
+    padding: 20px;
+    border-radius: 4px;
+    border-left: 3px solid var(--text-accent);
+}
+
 .services-section {
     background-color: var(--bg-services);
     padding: var(--section-padding);
@@ -238,10 +355,18 @@ ul {
 
 .service-card {
     background: transparent;
-    padding: 5px;
+    padding: 15px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 8px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    background-color: #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
 }
 
 .service-img {
@@ -256,11 +381,11 @@ ul {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .service-card:hover .service-img img {
-    transform: scale(1.05);
+    transform: scale(1.1);
 }
 
 .service-card h3 {
@@ -291,15 +416,37 @@ ul {
     color: #777;
 }
 
+.service-list {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.service-list li {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #555;
+    padding-left: 10px;
+}
+
+.service-list .sub-item {
+    margin-left: 20px;
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #777;
+    margin-bottom: 8px;
+}
+
 .btn-service {
-    margin-top: auto; /* Push to bottom */
+    margin-top: 20px;
     background-color: transparent;
     border: 1px solid #ccc;
     padding: 10px 25px;
     font-size: 0.9rem;
     color: var(--text-main);
     border-radius: 4px;
-    margin-top: 20px;
 }
 
 .btn-service:hover {
@@ -307,7 +454,6 @@ ul {
     border-color: var(--bg-about);
 }
 
-/* FEEDBACK SECTION */
 .feedback-section {
     background-color: var(--bg-hero);
     padding: var(--section-padding);
@@ -326,7 +472,6 @@ ul {
     box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
 }
 
-/* Carousel Styles */
 .feedback-carousel {
     position: relative;
     height: 100%;
@@ -338,7 +483,7 @@ ul {
 .carousel-track-container {
     position: relative;
     overflow: hidden;
-    min-height: 250px; /* Space for text */
+    min-height: 250px;
 }
 
 .carousel-track {
@@ -402,7 +547,7 @@ ul {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: rgba(93, 64, 55, 0.2); /* light brown */
+    background: rgba(93, 64, 55, 0.2);
     cursor: pointer;
     transition: background 0.3s ease;
 }
@@ -411,7 +556,6 @@ ul {
     background: var(--text-accent);
 }
 
-/* FOOTER SECTION - Split Layout */
 .main-footer {
     padding: 0;
     background: none;
@@ -421,11 +565,11 @@ ul {
 .footer-split-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    min-height: 600px; /* Ensure height */
+    min-height: 600px;
 }
 
 .footer-info {
-    background-color: var(--text-accent); /* Dark Brown */
+    background-color: var(--text-accent);
     color: var(--white);
     padding: 80px 60px;
     display: flex;
@@ -443,7 +587,7 @@ ul {
     border-bottom: 1px solid rgba(255,255,255,0.2);
     padding-bottom: 10px;
     display: inline-block;
-    color: var(--bg-hero); /* Contrast text */
+    color: var(--bg-hero);
 }
 
 .location-text {
@@ -545,7 +689,6 @@ ul {
     display: block;
 }
 
-/* Floating WhatsApp Button */
 .wsp-float {
     position: fixed;
     width: 60px;
@@ -571,18 +714,37 @@ ul {
     color: #FFF;
 }
 
-@media screen and (max-width: 768px) {
-    .wsp-float {
-        width: 50px;
-        height: 50px;
-        bottom: 20px;
-        right: 20px;
-        font-size: 25px;
-    }
+.btn-outline, .btn-service, .whatsapp-btn {
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
 }
 
+.btn-outline:hover, .btn-service:hover, .whatsapp-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
 
-/* ANIMATIONS & KEYFRAMES */
+.fade-in-left, .fade-in-right, .fade-in-up {
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1),
+                filter 1.2s ease;
+    filter: blur(2px);
+}
+
+.fade-in-left { transform: translateX(-40px); }
+.fade-in-right { transform: translateX(40px); }
+.fade-in-up { transform: translateY(60px); }
+
+.visible {
+    opacity: 1 !important;
+    transform: translateX(0) translateY(0) !important;
+    filter: blur(0) !important;
+}
+
+.delay-100 { transition-delay: 0.1s; }
+.delay-200 { transition-delay: 0.2s; }
 
 @keyframes float {
     0% { transform: translateY(0px); }
@@ -601,130 +763,7 @@ ul {
     100% { transform: scale(1.05); }
 }
 
-/* Enhanced Elements */
-
-/* Hero Image Floating Effect */
-.hero-image img {
-    border-radius: 4px;
-    box-shadow: 10px 10px 30px rgba(0,0,0,0.1);
-    animation: float 6s ease-in-out infinite;
-}
-
-/* Nav Links Underline Animation */
-.nav-links li a {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-main);
-    position: relative;
-    padding-bottom: 5px;
-}
-
-.nav-links li a::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 2px;
-    bottom: 0;
-    left: 0;
-    background-color: var(--text-accent);
-    transition: width 0.3s ease;
-}
-
-.nav-links li a:hover::after {
-    width: 100%;
-}
-
-.nav-links li a:hover {
-    color: var(--text-accent);
-}
-
-/* Buttons with Lift & Glow */
-.btn-outline, .btn-service, .whatsapp-btn {
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-outline:hover, .btn-service:hover, .whatsapp-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-}
-
-/* Hero Button Special */
-.btn-outline::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255,255,255,0.2);
-    transition: transform 0.4s;
-    transform: skewX(-20deg);
-}
-
-.btn-outline:hover::before {
-    left: 100%;
-    transition: 0.5s;
-}
-
-/* Service Cards refined hover */
-.service-card {
-    background: transparent;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 8px;
-    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
-}
-
-.service-card:hover {
-    transform: translateY(-10px);
-    background-color: #fff;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-}
-
-/* Images Zoom on Hover (already partially there, refining) */
-.service-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.service-card:hover .service-img img {
-    transform: scale(1.1);
-}
-
-
-/* Scroll Animations Refined */
-.fade-in-left, .fade-in-right, .fade-in-up {
-    opacity: 0;
-    transition: opacity 1.2s cubic-bezier(0.165, 0.84, 0.44, 1), 
-                transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1),
-                filter 1.2s ease;
-    filter: blur(2px);
-}
-
-.fade-in-left { transform: translateX(-40px); }
-.fade-in-right { transform: translateX(40px); }
-.fade-in-up { transform: translateY(60px); }
-
-.visible {
-    opacity: 1 !important;
-    transform: translateX(0) translateY(0) !important;
-    filter: blur(0) !important;
-}
-
-
-.delay-100 { transition-delay: 0.1s; }
-.delay-200 { transition-delay: 0.2s; }
-
-/* RESPONSIVE */
 @media screen and (max-width: 768px) {
-    /* Prevenir overflow horizontal */
     body {
         overflow-x: hidden;
     }
@@ -749,7 +788,7 @@ ul {
     .burger {
         display: block;
     }
-    
+
     .hero-container, .about-container, .feedback-container {
         grid-template-columns: 1fr;
         text-align: center;
@@ -779,8 +818,7 @@ ul {
         padding-left: 15px;
         padding-right: 15px;
     }
-    
-    /* Make order logical on mobile: Image then Text usually */
+
     .hero-image, .about-image {
         order: -1;
         margin-bottom: 30px;
@@ -798,62 +836,55 @@ ul {
         padding: 0;
     }
 
-    .when-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    /* Reducir padding de secciones en móvil */
     .about-section,
     .feedback-section,
     .info-section,
     .when-section {
         padding: 50px 15px;
     }
-    
-    /* Servicios con padding diferente para que las imágenes ocupen todo el ancho */
+
     .services-section {
         padding: 50px 0;
     }
-    
+
     .services-section > .container {
         padding: 0;
         max-width: 100%;
     }
-    
+
     .services-section .section-title {
         padding: 0 15px;
         margin-left: auto;
         margin-right: auto;
     }
-    
-    /* Ajustar tamaños de texto en móvil */
+
     .section-title {
         font-size: 1.8rem;
         margin-bottom: 30px;
         padding: 0 10px;
         word-wrap: break-word;
     }
-    
+
     .hero-quote {
         font-size: 1.1rem;
         padding: 0 10px;
     }
-    
+
     .btn-outline {
         padding: 10px 40px;
         font-size: 1.1rem;
         word-wrap: break-word;
     }
-    
+
     .about-text h2 {
         font-size: 1.8rem;
     }
-    
+
     .service-card {
         padding: 0 15px 20px 15px;
         margin-bottom: 0;
     }
-    
+
     .service-img {
         width: 100vw;
         height: 350px;
@@ -862,150 +893,34 @@ ul {
         margin-bottom: 20px;
         border-radius: 0;
     }
-    
+
     .service-card h3 {
         font-size: 1.3rem;
         padding: 0 5px;
     }
-    
+
     .service-card h4 {
         font-size: 1rem;
         padding: 0 5px;
     }
-    
+
     .service-card p {
         padding: 0 5px;
     }
-    
+
     .testimonial p {
         font-size: 1.2rem;
         padding: 0 10px;
     }
-}
 
-/* NEW SECTIONS STYLES */
+    .wsp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 25px;
+    }
 
-/* Info Section (Sobre la Experienciaki) */
-.info-section {
-    background-color: var(--bg-about);
-    padding: var(--section-padding);
-}
-
-.info-content {
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.info-content h3 {
-    font-size: 2rem;
-    color: var(--text-accent);
-    margin-bottom: 20px;
-    margin-top: 40px;
-}
-
-.info-content h3:first-child {
-    margin-top: 0;
-}
-
-.info-content p {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    margin-bottom: 25px;
-    color: var(--text-main);
-}
-
-.highlight-text {
-    font-style: italic;
-    font-size: 1.15rem;
-    color: var(--text-accent);
-    font-weight: 500;
-    margin-top: 30px;
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
-}
-
-/* When Section (Cuándo necesitas) */
-.when-section {
-    background-color: var(--bg-hero);
-    padding: var(--section-padding);
-}
-
-.when-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 60px;
-    align-items: center;
-    max-width: 1100px;
-    margin: 0 auto;
-}
-
-.checklist {
-    list-style: none;
-    padding: 0;
-}
-
-.checklist li {
-    font-size: 1.05rem;
-    margin-bottom: 15px;
-    padding-left: 30px;
-    position: relative;
-    color: var(--text-main);
-    line-height: 1.6;
-}
-
-.checklist li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--text-accent);
-    font-weight: bold;
-    font-size: 1.3rem;
-}
-
-.when-description p {
-    font-size: 1.05rem;
-    margin-bottom: 20px;
-    line-height: 1.8;
-    color: var(--text-main);
-}
-
-.italic-text {
-    font-style: italic;
-    color: var(--text-accent);
-    background: rgba(93, 64, 55, 0.05);
-    padding: 20px;
-    border-radius: 4px;
-    border-left: 3px solid var(--text-accent);
-}
-
-/* Service List Styles */
-.service-list {
-    list-style: none;
-    text-align: left;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.service-list li {
-    margin-bottom: 12px;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #555;
-    padding-left: 10px;
-}
-
-.service-list .sub-item {
-    margin-left: 20px;
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #777;
-    margin-bottom: 8px;
-}
-
-/* Responsive adjustments for new sections */
-@media screen and (max-width: 768px) {
     .info-content h3 {
         font-size: 1.4rem;
         padding: 0 5px;
@@ -1015,7 +930,7 @@ ul {
         font-size: 0.95rem;
         padding: 0 5px;
     }
-    
+
     .highlight-text {
         font-size: 1rem;
         padding: 15px;
@@ -1028,8 +943,7 @@ ul {
         gap: 30px;
         padding: 0 5px;
     }
-    
-    /* Achicar significativamente el título en móvil */
+
     .when-section .section-title {
         font-size: 1.3rem !important;
         line-height: 1.3;
@@ -1042,7 +956,7 @@ ul {
         padding-left: 25px;
         margin-bottom: 12px;
     }
-    
+
     .checklist li::before {
         font-size: 1.1rem;
     }
@@ -1051,7 +965,7 @@ ul {
         font-size: 0.9rem;
         padding: 0 5px;
     }
-    
+
     .italic-text {
         padding: 15px;
         font-size: 0.9rem;
@@ -1064,16 +978,18 @@ ul {
         line-height: 1.5;
         padding-left: 5px;
     }
-    
+
     .service-list .sub-item {
         margin-left: 10px;
         font-size: 0.8rem;
     }
-    .feedback-container{
+
+    .feedback-container {
         max-width: 100%;
         padding: 0;
     }
-    .feedback-image img{
+
+    .feedback-image img {
         width: 100%;
     }
 }
